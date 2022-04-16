@@ -19,14 +19,14 @@ app.use(`/api`, api)
 // Serves static files (CSS, JS)
 app.use(express.static(`public`));
 
+// Get /notes returns notes.html
+app.get(`/notes`, (req, res) =>
+res.sendFile(path.join(__dirname, `/public/notes.html`))
+);
+
 // Get * route for index.html
 app.get(`/*`, (req, res) =>
     res.sendFile(path.join(__dirname, `/public/index.html`))
-);
-
-// Get /notes returns notes.html
-app.get(`/notes`, (req, res) =>
-    res.sendFile(path.join(__dirname, `/public/notes.html`))
 );
 
 // Server Listen
